@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asha Neuropsychiatry Clinic – Book Appointment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f7fa;--surface:#fff;--surface2:#edf0f5;
+  --navy:#1a2e4a;--blue:#2563a8;--blue2:#3576c0;--blue-lt:#eaf1fb;
+  --teal:#0e7c6e;--teal-lt:#e5f5f2;
+  --lavender:#6b5fb5;--lav-lt:#f0eefb;
+  --red:#b83232;--red-lt:#fdecea;
+  --amber:#b07800;--amber-lt:#fff8e6;
+  --green:#1a6e3c;--green-lt:#e8f5ee;
+  --txt:#0f1c2e;--txt2:#4a5568;--txt3:#8a98a8;
+  --bdr:#d5dce8;--bdr2:#beccdf;
+  --r:10px;--rs:7px;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+.app{max-width:860px;margin:0 auto;padding:0 0 4rem}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#1a2e4a 0%,#1e3d62 100%);padding:0;margin-bottom:0}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:42px;height:42px;background:rgba(255,255,255,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15)}
+.logo-icon svg{width:24px;height:24px;stroke:#93c5fd;fill:none;stroke-width:1.8}
+.clinic-name{font-family:'Lora',serif;font-size:18px;color:#fff;font-weight:500;line-height:1.2}
+.clinic-sub{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.hdr-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:5px 12px;font-size:12px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:6px}
+.hdr-dot{width:7px;height:7px;background:#4ade80;border-radius:50%}
+.header-strip{background:rgba(0,0,0,.15);padding:.55rem 1.5rem;font-size:12px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06)}
+.header-strip span{display:flex;align-items:center;gap:5px}
+
+/* PRIVACY NOTICE */
+.privacy-bar{background:#eaf1fb;border-bottom:1px solid #c5d9f0;padding:.65rem 1.5rem;font-size:12px;color:var(--blue);display:flex;align-items:center;gap:8px}
+
+/* WA BANNER */
+.wa-banner{background:linear-gradient(135deg,#1d8a60,#0f6e4d);margin:1.2rem 1.5rem 0;border-radius:var(--r);padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.wa-banner-left{display:flex;align-items:center;gap:10px}
+.wa-title{font-size:13px;font-weight:600;color:#fff}
+.wa-sub{font-size:11px;color:rgba(255,255,255,.75);margin-top:2px}
+.wa-btn{background:#fff;color:#0f6e4d;border:none;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer}
+.wa-btn:hover{background:#f0fff8}
+.wa-config{display:none;background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);margin:0 1.5rem;padding:1.2rem}
+.wa-config h3{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:.5rem}
+.wa-steps{font-size:12px;color:var(--txt2);line-height:1.9;margin-bottom:1rem}
+.wa-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.wi{display:flex;flex-direction:column;gap:4px}
+.wi label{font-size:10px;font-weight:600;color:var(--txt2);letter-spacing:.05em;text-transform:uppercase}
+.wi input{border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;background:var(--surface);color:var(--txt);outline:none}
+.wi input:focus{border-color:#25d366}
+.wa-save-btn{background:#25d366;color:#fff;border:none;border-radius:var(--rs);padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer}
+
+/* TABS */
+.tab-bar{display:flex;border-bottom:1.5px solid var(--bdr);margin:1.2rem 1.5rem 0;padding:0}
+.tab{padding:10px 16px;border:none;background:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:500;color:var(--txt3);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:.2s}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab:hover{color:var(--txt2)}
+.wrap{padding:1.5rem}
+
+/* STEPS */
+.step-bar{display:flex;align-items:flex-start;margin-bottom:2rem}
+.stp{display:flex;flex-direction:column;align-items:center;flex:1}
+.stp-circle{width:28px;height:28px;border-radius:50%;border:2px solid var(--bdr);background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--txt3);transition:.3s;z-index:1}
+.stp.done .stp-circle{background:var(--blue);border-color:var(--blue);color:#fff}
+.stp.active .stp-circle{border-color:var(--blue);color:var(--blue);background:var(--blue-lt)}
+.stp-lbl{font-size:10px;color:var(--txt3);margin-top:4px;text-align:center}
+.stp.active .stp-lbl,.stp.done .stp-lbl{color:var(--blue)}
+.stp-line{flex:1;height:2px;background:var(--bdr);margin-top:-14px}
+.stp-line.done{background:var(--blue)}
+
+h2{font-family:'Lora',serif;font-size:21px;color:var(--navy);margin-bottom:4px}
+.sub{font-size:13px;color:var(--txt2);margin-bottom:1.4rem;line-height:1.6}
+.section-lbl{font-size:10px;font-weight:700;color:var(--txt3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+
+/* DOCTOR CARD (single) */
+.doc-hero{border:2px solid var(--blue);border-radius:var(--r);padding:1.2rem;background:var(--blue-lt);display:flex;gap:14px;align-items:flex-start;margin-bottom:1.5rem}
+.doc-avatar-wrap{position:relative;flex-shrink:0;cursor:pointer}
+.doc-avatar{width:80px;height:80px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;color:#fff;border:3px solid rgba(255,255,255,.6);overflow:hidden;transition:.2s}
+.doc-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.doc-avatar-wrap:hover .doc-avatar{border-color:#fff}
+.photo-overlay{position:absolute;bottom:0;right:0;width:24px;height:24px;background:var(--blue);border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+#photo-input{display:none}
+.doc-name{font-family:'Lora',serif;font-size:17px;color:var(--navy);font-weight:500}
+.doc-qual{font-size:12px;color:var(--blue);margin-top:2px;font-weight:600}
+.doc-exp{font-size:12px;color:var(--txt2);margin-top:3px}
+.doc-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.doc-tag{background:#fff;border:1px solid var(--bdr2);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--txt2);font-weight:500}
+.doc-avail{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green);font-weight:600;margin-top:6px}
+.avail-dot{width:6px;height:6px;background:var(--green);border-radius:50%}
+
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+.svc-card{border:1.5px solid var(--bdr);border-radius:var(--r);padding:1rem 1.1rem;cursor:pointer;transition:.2s;background:var(--surface)}
+.svc-card:hover{border-color:var(--lavender);background:var(--lav-lt)}
+.svc-card.selected{border-color:var(--lavender);background:var(--lav-lt);box-shadow:0 0 0 3px rgba(107,95,181,.1)}
+.svc-icon{font-size:24px;margin-bottom:8px}
+.svc-name{font-size:13px;font-weight:600;color:var(--txt);line-height:1.4}
+.svc-dur{font-size:11px;color:var(--txt3);margin-top:3px}
+.svc-fee{font-size:15px;font-weight:700;color:var(--lavender);margin-top:6px}
+.svc-note{font-size:10px;color:var(--txt3);margin-top:3px;font-style:italic;line-height:1.4}
+
+/* CALENDAR */
+.cal-wrap{background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);padding:1.1rem;margin-bottom:1.2rem}
+.cal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.cal-month-lbl{font-family:'Lora',serif;font-size:15px;color:var(--navy)}
+.cal-nav-btns{display:flex;gap:6px}
+.cnav{border:1px solid var(--bdr);background:var(--surface2);border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:14px;color:var(--txt2);display:flex;align-items:center;justify-content:center}
+.cnav:hover{background:var(--bdr)}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cdl{text-align:center;font-size:10px;font-weight:600;color:var(--txt3);padding:3px;letter-spacing:.04em}
+.cd{text-align:center;padding:7px 3px;border-radius:6px;font-size:12px;cursor:pointer;color:var(--txt);transition:.15s}
+.cd:hover:not(.cdis):not(.cem){background:var(--blue-lt);color:var(--blue)}
+.cd.ctoday{font-weight:600;color:var(--blue)}
+.cd.csel{background:var(--blue);color:#fff;font-weight:600}
+.cd.cdis{color:var(--bdr2);cursor:default}
+.cd.cem{cursor:default}
+
+/* SLOTS */
+.slots-wrap{background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);padding:1rem;margin-bottom:1.2rem}
+.slots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.slot-btn{border:1.5px solid var(--bdr);border-radius:var(--rs);padding:7px 4px;text-align:center;font-size:12px;font-weight:500;cursor:pointer;transition:.15s;background:var(--surface);color:var(--txt)}
+.slot-btn:hover{border-color:var(--lavender);background:var(--lav-lt);color:var(--lavender)}
+.slot-btn.sel{background:var(--lavender);color:#fff;border-color:var(--lavender)}
+.slot-btn.busy{background:var(--surface2);color:var(--bdr2);cursor:default;text-decoration:line-through}
+
+/* FORM */
+.form-section{background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);padding:1.2rem;margin-bottom:1rem}
+.form-section-title{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:7px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.fg label{font-size:10px;font-weight:700;color:var(--txt2);letter-spacing:.05em;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{border:1.5px solid var(--bdr);border-radius:var(--rs);padding:9px 11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;background:var(--surface);color:var(--txt);outline:none;transition:.2s;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,168,.08)}
+.confidential-note{background:var(--lav-lt);border:1px solid #c8c0ea;border-radius:var(--rs);padding:.7rem 1rem;font-size:12px;color:var(--lavender);margin-bottom:1rem;line-height:1.6}
+
+/* SUMMARY */
+.summary-card{background:var(--blue-lt);border:1px solid #c0d4f0;border-radius:var(--r);padding:1.1rem;margin-bottom:1.2rem}
+.sum-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;font-size:13px;border-bottom:1px solid #d4e4f8;gap:10px}
+.sum-row:last-child{border-bottom:none;font-weight:600;font-size:14px;padding-top:8px;margin-top:4px}
+.sum-row span:first-child{color:var(--txt2);white-space:nowrap}
+.sum-row span:last-child{color:var(--navy);text-align:right}
+.sum-row.total span:last-child{color:var(--lavender);font-size:16px}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:10px;margin-top:1.2rem;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:var(--rs);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:.15s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue2)}
+.btn-primary:disabled{opacity:.4;cursor:default}
+.btn-secondary{background:var(--surface);color:var(--txt2);border:1.5px solid var(--bdr)}
+.btn-secondary:hover{background:var(--surface2)}
+
+/* ALERTS */
+.alert-box{background:var(--amber-lt);border:1px solid #f0d070;border-radius:var(--rs);padding:.7rem 1rem;font-size:12px;color:var(--amber);margin-bottom:1rem;line-height:1.6}
+.info-box{background:var(--blue-lt);border:1px solid #c0d4f0;border-radius:var(--rs);padding:.7rem 1rem;font-size:12px;color:var(--blue);margin-bottom:1rem;line-height:1.6}
+
+/* SUCCESS */
+.confirm-wrap{text-align:center;padding:2rem 1rem 1.5rem}
+.confirm-ring{width:80px;height:80px;background:var(--green-lt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:36px;border:3px solid #9fd4b5}
+.token-box{background:var(--navy);color:#93c5fd;font-family:monospace;font-size:15px;letter-spacing:.1em;padding:10px 20px;border-radius:var(--rs);display:inline-block;margin-bottom:1rem;font-weight:600}
+.wa-sent-box{background:var(--green-lt);border:1px solid #9fd4b5;border-radius:var(--rs);padding:.7rem 1rem;font-size:12px;color:var(--green);margin-bottom:1rem;display:none}
+.confirm-detail-card{background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);padding:1rem;margin:1rem 0;text-align:left}
+.cd-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;font-size:13px;border-bottom:1px dashed var(--bdr);gap:10px}
+.cd-row:last-child{border-bottom:none}
+.cd-row span:first-child{color:var(--txt2);white-space:nowrap}
+.cd-row span:last-child{font-weight:500;color:var(--txt);text-align:right}
+
+/* ADMIN */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
+.stat{background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);padding:.9rem 1rem}
+.stat-val{font-family:'Lora',serif;font-size:26px;color:var(--navy)}
+.stat-lbl{font-size:11px;color:var(--txt3);margin-top:2px}
+.stat-change{font-size:11px;color:var(--green);margin-top:4px;font-weight:600}
+.admin-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:12px;flex-wrap:wrap}
+.admin-search{border:1.5px solid var(--bdr);border-radius:var(--rs);padding:8px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;background:var(--surface);outline:none;min-width:200px}
+.admin-search:focus{border-color:var(--blue)}
+.bk-list{display:flex;flex-direction:column;gap:8px}
+.bk-item{background:var(--surface);border:1px solid var(--bdr);border-radius:var(--r);padding:1rem 1.1rem;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.bk-item:hover{border-color:var(--bdr2)}
+.bk-name{font-weight:600;font-size:14px;color:var(--txt)}
+.bk-meta{font-size:11px;color:var(--txt3);margin-top:3px;line-height:1.5}
+.bk-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.04em;text-transform:uppercase}
+.b-confirmed{background:var(--green-lt);color:var(--green)}
+.b-pending{background:var(--amber-lt);color:var(--amber)}
+.b-cancelled{background:var(--red-lt);color:var(--red)}
+.bk-fee{font-weight:700;font-size:13px;color:var(--lavender)}
+.status-sel{border:1px solid var(--bdr);border-radius:4px;font-size:11px;padding:3px 6px;background:var(--surface);color:var(--txt2);cursor:pointer}
+.empty-admin{text-align:center;padding:2.5rem;color:var(--txt3);font-size:13px}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;border-radius:var(--r);padding:14px 18px;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.2);z-index:999;display:none;max-width:300px;line-height:1.5}
+.toast.show{display:block;animation:slideIn .3s ease}
+@keyframes slideIn{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+@media(max-width:580px){
+  .svc-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .slots-grid{grid-template-columns:repeat(3,1fr)}
+  .wa-inputs{grid-template-columns:1fr}
+  .header-strip{display:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        </div>
+        <div>
+          <div class="clinic-name">Asha Neuropsychiatry Clinic</div>
+          <div class="clinic-sub">Dr. Ashish Kr Gupta · Neuropsychiatrist</div>
+        </div>
+      </div>
+      <div class="hdr-badge"><div class="hdr-dot"></div>Appointments Open</div>
+    </div>
+    <div class="header-strip">
+      <span>📍 Plot No. 20, Behind Uday Bajaj Showroom, Manduadih Chauraha, DLW Road, Varanasi – 221103</span>
+      <span>🔒 All consultations are strictly confidential</span>
+    </div>
+  </div>
+
+  <!-- PRIVACY BAR -->
+  <div class="privacy-bar">
+    🔒 Your information is completely private and confidential. We follow strict medical privacy standards.
+  </div>
+
+  <!-- WA BANNER -->
+  <div class="wa-banner" id="wa-banner">
+    <div class="wa-banner-left">
+      <span style="font-size:22px">💬</span>
+      <div>
+        <div class="wa-title">Enable WhatsApp Notifications</div>
+        <div class="wa-sub">Get instant WhatsApp alert when a patient books</div>
+      </div>
+    </div>
+    <button class="wa-btn" onclick="toggleWaConfig()">Setup →</button>
+  </div>
+  <div class="wa-config" id="wa-config">
+    <h3>📲 WhatsApp Setup (Free · CallMeBot)</h3>
+    <div class="wa-steps">
+      <strong>1.</strong> Save <strong>+34 644 82 54 05</strong> as "CallMeBot" in your phone contacts<br>
+      <strong>2.</strong> Send this WhatsApp message to that number: <code style="background:#f0f4f8;padding:1px 6px;border-radius:3px;font-size:11px">I allow callmebot to send me messages</code><br>
+      <strong>3.</strong> You'll receive your API key via WhatsApp · Enter it below
+    </div>
+    <div class="wa-inputs">
+      <div class="wi"><label>Your WhatsApp Number</label><input id="wa-phone" placeholder="+919876543210"></div>
+      <div class="wi"><label>API Key from CallMeBot</label><input id="wa-apikey" placeholder="1234567"></div>
+    </div>
+    <button class="wa-save-btn" onclick="saveWaConfig()">Save & Enable</button>
+    <button onclick="toggleWaConfig()" style="background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;margin-left:10px">Cancel</button>
+  </div>
+
+  <!-- TABS -->
+  <div class="tab-bar">
+    <button class="tab active" onclick="showTab('book')">📋 Book Appointment</button>
+    <button class="tab" onclick="showTab('admin')">🏥 Admin Panel</button>
+  </div>
+
+  <!-- ══════════════ BOOKING TAB ══════════════ -->
+  <div id="tab-book" class="wrap">
+
+    <!-- STEP 1: Service -->
+    <div id="pg-service">
+      <div class="step-bar">
+        <div class="stp active"><div class="stp-circle">1</div><div class="stp-lbl">Service</div></div>
+        <div class="stp-line"></div>
+        <div class="stp"><div class="stp-circle">2</div><div class="stp-lbl">Schedule</div></div>
+        <div class="stp-line"></div>
+        <div class="stp"><div class="stp-circle">3</div><div class="stp-lbl">Patient Info</div></div>
+        <div class="stp-line"></div>
+        <div class="stp"><div class="stp-circle">4</div><div class="stp-lbl">Confirm</div></div>
+      </div>
+
+      <!-- DOCTOR CARD -->
+      <div class="section-lbl">Your Doctor</div>
+      <div class="doc-hero">
+        <div class="doc-avatar-wrap" onclick="document.getElementById('photo-input').click()" title="Click to upload doctor photo">
+          <div class="doc-avatar" id="doc-avatar-circle">
+            <span id="doc-initials">AG</span>
+          </div>
+          <div class="photo-overlay">📷</div>
+          <input type="file" id="photo-input" accept="image/*" onchange="uploadPhoto(this)">
+        </div>
+        <div>
+          <div class="doc-name">Dr. Ashish Kr Gupta</div>
+          <div class="doc-qual">MBBS · MD (Psychiatry) · Neuropsychiatrist</div>
+          <div class="doc-exp">Specialist in Neuropsychiatry, Addiction Medicine & Psychotherapy · Varanasi</div>
+          <div class="doc-tags">
+            <span class="doc-tag">Neuropsychiatry</span>
+            <span class="doc-tag">De-addiction</span>
+            <span class="doc-tag">Psychotherapy</span>
+          </div>
+          <div class="doc-avail"><div class="avail-dot"></div>Available for appointments</div>
+        </div>
+      </div>
+
+      <div class="section-lbl" style="margin-top:1.2rem">Select Service</div>
+      <div class="svc-grid" id="svc-grid"></div>
+
+      <div class="info-box">ℹ️ First-time patients are encouraged to book a <strong>New Patient Consultation</strong> so the doctor can understand your history and recommend the right therapy plan.</div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-svc-next" onclick="goPage('pg-service','pg-schedule')" disabled>Choose Date & Time →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Schedule -->
+    <div id="pg-schedule" style="display:none">
+      <div class="step-bar">
+        <div class="stp done"><div class="stp-circle">✓</div><div class="stp-lbl">Service</div></div>
+        <div class="stp-line done"></div>
+        <div class="stp active"><div class="stp-circle">2</div><div class="stp-lbl">Schedule</div></div>
+        <div class="stp-line"></div>
+        <div class="stp"><div class="stp-circle">3</div><div class="stp-lbl">Patient Info</div></div>
+        <div class="stp-line"></div>
+        <div class="stp"><div class="stp-circle">4</div><div class="stp-lbl">Confirm</div></div>
+      </div>
+      <h2>Pick a Date & Time</h2>
+      <p class="sub">Clinic hours: Mon–Sat · 10:00 AM – 1:00 PM and 5:00 PM – 8:00 PM</p>
+      <div class="cal-wrap">
+        <div class="cal-hdr">
+          <div class="cal-month-lbl" id="cal-lbl"></div>
+          <div class="cal-nav-btns">
+            <button class="cnav" onclick="chMon(-1)">‹</button>
+            <button class="cnav" onclick="chMon(1)">›</button>
+          </div>
+        </div>
+        <div class="cgrid" id="cgrid"></div>
+      </div>
+      <div class="slots-wrap" id="slots-wrap" style="display:none">
+        <div class="section-lbl">Available Slots — <span id="slot-date-lbl" style="color:var(--blue);text-transform:none;font-size:12px;font-weight:600"></span></div>
+        <div style="font-size:11px;color:var(--txt3);margin-bottom:8px">Struck-through slots are already booked</div>
+        <div class="slots-grid" id="slots-grid"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goBack('pg-service','pg-schedule')">← Back</button>
+        <button class="btn btn-primary" id="btn-sch-next" onclick="goPage('pg-schedule','pg-patient')" disabled>Enter Patient Details →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Patient -->
+    <div id="pg-patient" style="display:none">
+      <div class="step-bar">
+        <div class="stp done"><div class="stp-circle">✓</div><div class="stp-lbl">Service</div></div>
+        <div class="stp-line done"></div>
+        <div class="stp done"><div class="stp-circle">✓</div><div class="stp-lbl">Schedule</div></div>
+        <div class="stp-line done"></div>
+        <div class="stp active"><div class="stp-circle">3</div><div class="stp-lbl">Patient Info</div></div>
+        <div class="stp-line"></div>
+        <div class="stp"><div class="stp-circle">4</div><div class="stp-lbl">Confirm</div></div>
+      </div>
+      <h2>Patient Details</h2>
+      <p class="sub">Please fill in accurate information for your medical record</p>
+
+      <div class="confidential-note">🔒 All information shared here is strictly confidential and protected. It is only accessible to Dr. Ashish Kr Gupta and will never be shared with any third party.</div>
+
+      <div class="form-section">
+        <div class="form-section-title">👤 Personal Information</div>
+        <div class="form-row">
+          <div class="fg"><label>Full Name</label><input id="p-name" placeholder="Patient's full name" oninput="valPat()"></div>
+          <div class="fg"><label>Age</label><input id="p-age" type="number" placeholder="Age in years" min="1" max="110" oninput="valPat()"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>Gender</label>
+            <select id="p-gender" onchange="valPat()">
+              <option value="">Select</option>
+              <option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option>
+            </select>
+          </div>
+          <div class="fg"><label>Is this for self or someone else?</label>
+            <select id="p-forwhom">
+              <option value="Self">Self</option>
+              <option value="Family member">Family member</option>
+              <option value="Partner / Spouse">Partner / Spouse</option>
+              <option value="Friend">Friend</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📞 Contact Details</div>
+        <div class="form-row">
+          <div class="fg"><label>Phone Number</label><input id="p-phone" placeholder="+91 98765 43210" oninput="valPat()"></div>
+          <div class="fg"><label>Alternate Phone (optional)</label><input id="p-phone2" placeholder="+91 ..."></div>
+        </div>
+        <div class="fg"><label>Email Address (optional)</label><input id="p-email" type="email" placeholder="email@example.com"></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🧠 Health Information</div>
+        <div class="fg"><label>Primary concern / reason for visit</label>
+          <select id="p-reason" onchange="valPat()">
+            <option value="">Select your concern</option>
+            <option>Anxiety / Panic attacks</option>
+            <option>Depression / Low mood</option>
+            <option>Alcohol de-addiction</option>
+            <option>Drug / Substance de-addiction</option>
+            <option>Sleep problems / Insomnia</option>
+            <option>Relationship / Couple issues</option>
+            <option>Stress / Burnout</option>
+            <option>Memory / Cognitive issues</option>
+            <option>Behavioural problems</option>
+            <option>Follow-up visit</option>
+            <option>Other / Prefer to discuss with doctor</option>
+          </select>
+        </div>
+        <div class="fg"><label>How long have you had this concern?</label>
+          <select id="p-duration">
+            <option value="">Select duration</option>
+            <option>Less than 1 month</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>6–12 months</option>
+            <option>More than 1 year</option>
+            <option>Several years</option>
+          </select>
+        </div>
+        <div class="fg"><label>Current medications (if any)</label><input id="p-meds" placeholder="List any medicines you are currently taking, or 'None'"></div>
+        <div class="fg"><label>Previous psychiatric treatment? (if any)</label><input id="p-prev" placeholder="Doctor name, clinic, or 'No previous treatment'"></div>
+        <div class="fg"><label>Additional notes for the doctor (optional)</label><textarea id="p-notes" rows="3" style="resize:vertical" placeholder="Describe your symptoms or anything else you'd like the doctor to know before your appointment…"></textarea></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goBack('pg-schedule','pg-patient')">← Back</button>
+        <button class="btn btn-primary" id="btn-pat-next" onclick="goToConfirm()" disabled>Review & Confirm →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Confirm -->
+    <div id="pg-confirm" style="display:none">
+      <div class="step-bar">
+        <div class="stp done"><div class="stp-circle">✓</div><div class="stp-lbl">Service</div></div>
+        <div class="stp-line done"></div>
+        <div class="stp done"><div class="stp-circle">✓</div><div class="stp-lbl">Schedule</div></div>
+        <div class="stp-line done"></div>
+        <div class="stp done"><div class="stp-circle">✓</div><div class="stp-lbl">Patient Info</div></div>
+        <div class="stp-line done"></div>
+        <div class="stp active"><div class="stp-circle">4</div><div class="stp-lbl">Confirm</div></div>
+      </div>
+      <h2>Confirm Your Appointment</h2>
+      <p class="sub">Please review all details carefully before confirming</p>
+      <div class="summary-card" id="final-summary"></div>
+      <div class="alert-box">⚠️ Please arrive 10 minutes before your scheduled time. Carry any previous prescriptions, reports, or medical records if available.</div>
+      <div class="info-box">📍 Plot No. 20, Behind Uday Bajaj Showroom, Manduadih Chauraha, DLW Road, Mandaudih, Varanasi – 221103</div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goBack('pg-patient','pg-confirm')">← Edit Details</button>
+        <button class="btn btn-primary" onclick="bookNow()">✓ Confirm Appointment</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="pg-success" style="display:none">
+      <div class="confirm-wrap">
+        <div class="confirm-ring">✅</div>
+        <h2 style="margin-bottom:6px">Appointment Confirmed!</h2>
+        <p class="sub">Your appointment with Dr. Ashish Kr Gupta has been booked</p>
+        <div class="token-box" id="token-box">TOKEN: ASHA-0000</div>
+        <div class="wa-sent-box" id="wa-sent-box">💬 Dr. Gupta has been notified on WhatsApp!</div>
+        <div class="confirm-detail-card" id="success-detail"></div>
+        <div class="alert-box">📍 Plot No. 20, Asha Neuropsychiatry Clinic, Behind Uday Bajaj Showroom, Manduadih Chauraha, DLW Road, Varanasi – 221103<br>For queries, call the clinic directly.</div>
+        <div class="confidential-note" style="text-align:left">🔒 Your appointment details are confidential. Please share your token number at the clinic reception on arrival.</div>
+        <div class="btn-row" style="justify-content:center">
+          <button class="btn btn-secondary" onclick="resetAll()">Book Another</button>
+          <button class="btn btn-primary" onclick="showTab('admin')">View Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ADMIN TAB ══════════════ -->
+  <div id="tab-admin" class="wrap" style="display:none">
+    <h2>Admin Panel</h2>
+    <p class="sub">Asha Neuropsychiatry Clinic · All patient appointments</p>
+    <div class="stat-grid" id="stat-grid"></div>
+    <div class="admin-hdr">
+      <div style="font-size:13px;font-weight:600;color:var(--navy)">All Appointments</div>
+      <input class="admin-search" id="admin-search" placeholder="Search by patient name or service…" oninput="renderAdmin()">
+    </div>
+    <div class="bk-list" id="bk-list"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><div id="toast-icon" style="font-size:18px;margin-bottom:4px"></div><div id="toast-msg"></div></div>
+
+<script>
+// ── SERVICES ──────────────────────────────────────────────────────────────────
+const SERVICES=[
+  {id:'new-consult',name:'New Patient Consultation',icon:'🩺',dur:'45–60 min',fee:600,note:'First visit · Complete evaluation & diagnosis'},
+  {id:'followup',name:'Follow-up Consultation',icon:'📋',dur:'20–30 min',fee:300,note:'For existing patients with previous diagnosis'},
+  {id:'psychotherapy',name:'Individual Psychotherapy',icon:'🧠',dur:'45 min',fee:800,note:'One-on-one talk therapy session'},
+  {id:'couple-therapy',name:'Psychotherapy for Couples',icon:'💑',dur:'60 min',fee:1200,note:'Joint session for relationship & communication issues'},
+  {id:'deaddiction',name:'De-addiction Therapy',icon:'🌿',dur:'45–60 min',fee:900,note:'Alcohol & behavioural addiction treatment'},
+  {id:'drug-deaddiction',name:'Drugs De-addiction Therapy',icon:'💊',dur:'60 min',fee:1100,note:'Substance use disorder assessment & therapy'},
+];
+
+const BUSY_SLOTS=['10:30','12:00','17:30','19:00'];
+const MORNING=['10:00','10:30','11:00','11:30','12:00','12:30'];
+const EVENING=['17:00','17:30','18:00','18:30','19:00','19:30','20:00'];
+const ALL_SLOTS=[...MORNING,...EVENING];
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const WDAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+let st={svc:null,date:null,time:null,patient:{},bookings:[],calY:0,calM:0,wa:{phone:'',apikey:'',enabled:false}};
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function uploadPhoto(input){
+  if(!input.files||!input.files[0])return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const circle=document.getElementById('doc-avatar-circle');
+    document.getElementById('doc-initials').style.display='none';
+    let img=circle.querySelector('img');
+    if(!img){img=document.createElement('img');circle.appendChild(img);}
+    img.src=e.target.result;
+    try{localStorage.setItem('asha_doc_photo',e.target.result);}catch(err){}
+    showToast('✅','Doctor photo updated!');
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function loadSavedPhoto(){
+  try{
+    const p=localStorage.getItem('asha_doc_photo');
+    if(p){
+      const circle=document.getElementById('doc-avatar-circle');
+      document.getElementById('doc-initials').style.display='none';
+      let img=document.createElement('img');
+      img.src=p;circle.appendChild(img);
+    }
+  }catch(e){}
+}
+
+function init(){
+  const n=new Date();st.calY=n.getFullYear();st.calM=n.getMonth();
+  try{const s=localStorage.getItem('wa_cfg_asha');if(s){st.wa=JSON.parse(s);updateWaBanner();}}catch(e){}
+  loadSavedPhoto();renderSvc();renderCal();loadSample();renderAdmin();
+}
+
+// ── WHATSAPP ──────────────────────────────────────────────────────────────────
+function toggleWaConfig(){const c=document.getElementById('wa-config');c.style.display=c.style.display==='none'?'block':'none';}
+function saveWaConfig(){
+  const ph=document.getElementById('wa-phone').value.trim();
+  const ak=document.getElementById('wa-apikey').value.trim();
+  if(!ph||!ak){showToast('⚠️','Enter both phone and API key');return;}
+  st.wa={phone:ph,apikey:ak,enabled:true};
+  try{localStorage.setItem('wa_cfg_asha',JSON.stringify(st.wa));}catch(e){}
+  document.getElementById('wa-config').style.display='none';
+  updateWaBanner();showToast('✅','WhatsApp notifications enabled!');
+}
+function updateWaBanner(){
+  if(!st.wa.enabled)return;
+  const b=document.getElementById('wa-banner');
+  b.style.background='linear-gradient(135deg,#1a6e3c,#0f5a30)';
+  b.innerHTML=`<div style="display:flex;align-items:center;gap:10px"><span style="font-size:20px">✅</span><div><div class="wa-title">WhatsApp Alerts Active</div><div class="wa-sub">Notifying ${st.wa.phone}</div></div></div><button class="wa-btn" onclick="disableWA()">Disable</button>`;
+}
+function disableWA(){st.wa={phone:'',apikey:'',enabled:false};try{localStorage.removeItem('wa_cfg_asha');}catch(e){}location.reload();}
+async function sendWhatsApp(bk){
+  if(!st.wa.enabled)return false;
+  const msg=`🏥 NEW APPOINTMENT - Asha Neuropsychiatry Clinic\n\n👤 Patient: ${bk.patient.name} (Age ${bk.patient.age}, ${bk.patient.gender})\n📞 Phone: ${bk.patient.phone}\n🧠 Service: ${bk.svc.name}\n📅 Date: ${new Date(bk.date).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}\n⏰ Time: ${bk.time}\n💰 Fee: Rs.${bk.svc.fee}\n📋 Concern: ${bk.patient.reason}\n🎫 Token: ${bk.id}\n\nPlot No. 20, Manduadih Chauraha, DLW Road, Varanasi`;
+  const url=`https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(st.wa.phone)}&text=${encodeURIComponent(msg)}&apikey=${st.wa.apikey}`;
+  try{await fetch(url,{mode:'no-cors'});return true;}catch(e){return false;}
+}
+
+// ── SERVICES ──────────────────────────────────────────────────────────────────
+function renderSvc(){
+  document.getElementById('svc-grid').innerHTML=SERVICES.map(s=>`
+    <div class="svc-card${st.svc?.id===s.id?' selected':''}" onclick="selSvc('${s.id}')">
+      <div class="svc-icon">${s.icon}</div>
+      <div class="svc-name">${s.name}</div>
+      <div class="svc-dur">⏱ ${s.dur}</div>
+      <div class="svc-fee">₹${s.fee}</div>
+      <div class="svc-note">${s.note}</div>
+    </div>`).join('');
+}
+function selSvc(id){st.svc=SERVICES.find(s=>s.id===id);renderSvc();document.getElementById('btn-svc-next').disabled=false;}
+
+// ── PAGES ─────────────────────────────────────────────────────────────────────
+function goPage(h,s){document.getElementById(h).style.display='none';document.getElementById(s).style.display='block';if(s==='pg-confirm')renderFinalSummary();}
+function goBack(s,h){document.getElementById(h).style.display='none';document.getElementById(s).style.display='block';}
+
+// ── CALENDAR ──────────────────────────────────────────────────────────────────
+function chMon(d){st.calM+=d;if(st.calM>11){st.calM=0;st.calY++;}if(st.calM<0){st.calM=11;st.calY--;}renderCal();}
+function renderCal(){
+  const g=document.getElementById('cgrid'),lbl=document.getElementById('cal-lbl');
+  if(!g)return;
+  lbl.textContent=MONTHS[st.calM]+' '+st.calY;
+  const now=new Date();
+  const first=new Date(st.calY,st.calM,1).getDay();
+  const days=new Date(st.calY,st.calM+1,0).getDate();
+  let h=WDAYS.map(d=>`<div class="cdl">${d}</div>`).join('');
+  for(let i=0;i<first;i++)h+=`<div class="cd cem"></div>`;
+  for(let d=1;d<=days;d++){
+    const dt=new Date(st.calY,st.calM,d);
+    const isTod=dt.toDateString()===now.toDateString();
+    const isPast=dt<new Date(now.toDateString())&&!isTod;
+    const isSun=dt.getDay()===0;
+    const isSel=st.date&&dt.toDateString()===new Date(st.date).toDateString();
+    const cls=(isPast||isSun)?'cdis':(isTod?'ctoday':'')+(isSel?' csel':'');
+    h+=`<div class="cd ${cls}"${(!isPast&&!isSun)?` onclick="selDate(${st.calY},${st.calM},${d})"`:''}>${d}${isSun?'<br><span style="font-size:8px;color:var(--bdr2)">Closed</span>':''}</div>`;
+  }
+  g.innerHTML=h;
+}
+function selDate(y,m,d){
+  st.date=new Date(y,m,d);st.time=null;
+  document.getElementById('btn-sch-next').disabled=true;
+  document.getElementById('slot-date-lbl').textContent=st.date.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  renderCal();renderSlots();document.getElementById('slots-wrap').style.display='block';
+}
+function renderSlots(){
+  const g=document.getElementById('slots-grid');
+  let h='';
+  MORNING.forEach(t=>{const b=BUSY_SLOTS.includes(t),s=st.time===t;h+=`<div class="slot-btn${b?' busy':s?' sel':''}"${!b?` onclick="selTime('${t}')"`:''}>${t}${b?' ✗':''}</div>`;});
+  EVENING.forEach(t=>{const b=BUSY_SLOTS.includes(t),s=st.time===t;h+=`<div class="slot-btn${b?' busy':s?' sel':''}"${!b?` onclick="selTime('${t}')"`:''}>${t}${b?' ✗':''}</div>`;});
+  g.innerHTML=h;
+}
+function selTime(t){st.time=t;renderSlots();document.getElementById('btn-sch-next').disabled=false;}
+
+// ── PATIENT ───────────────────────────────────────────────────────────────────
+function valPat(){
+  const ok=document.getElementById('p-name').value.trim()&&document.getElementById('p-age').value.trim()&&document.getElementById('p-gender').value&&document.getElementById('p-phone').value.trim()&&document.getElementById('p-reason').value;
+  document.getElementById('btn-pat-next').disabled=!ok;
+}
+function goToConfirm(){
+  st.patient={
+    name:document.getElementById('p-name').value.trim(),
+    age:document.getElementById('p-age').value,
+    gender:document.getElementById('p-gender').value,
+    forwhom:document.getElementById('p-forwhom').value,
+    phone:document.getElementById('p-phone').value.trim(),
+    phone2:document.getElementById('p-phone2').value.trim(),
+    email:document.getElementById('p-email').value.trim(),
+    reason:document.getElementById('p-reason').value,
+    duration:document.getElementById('p-duration').value||'Not specified',
+    meds:document.getElementById('p-meds').value.trim()||'None',
+    prev:document.getElementById('p-prev').value.trim()||'None',
+    notes:document.getElementById('p-notes').value.trim()
+  };
+  goPage('pg-patient','pg-confirm');
+}
+function renderFinalSummary(){
+  const p=st.patient,s=st.svc;
+  const d=st.date.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('final-summary').innerHTML=`
+    <div class="sum-row"><span>Doctor</span><span>Dr. Ashish Kr Gupta · Neuropsychiatrist</span></div>
+    <div class="sum-row"><span>Service</span><span>${s.icon} ${s.name}</span></div>
+    <div class="sum-row"><span>Date</span><span>${d}</span></div>
+    <div class="sum-row"><span>Time</span><span>${st.time}</span></div>
+    <div class="sum-row"><span>Patient</span><span>${p.name} · ${p.age} yrs · ${p.gender}</span></div>
+    <div class="sum-row"><span>Booking for</span><span>${p.forwhom}</span></div>
+    <div class="sum-row"><span>Primary concern</span><span>${p.reason}</span></div>
+    <div class="sum-row total"><span>Consultation Fee</span><span>₹${s.fee.toLocaleString('en-IN')}</span></div>
+  `;
+}
+
+// ── BOOK ──────────────────────────────────────────────────────────────────────
+async function bookNow(){
+  const id='ASHA-'+Math.floor(1000+Math.random()*9000);
+  const bk={id,svc:st.svc,date:new Date(st.date),time:st.time,patient:{...st.patient},status:'confirmed',ts:new Date()};
+  st.bookings.unshift(bk);
+  document.getElementById('pg-confirm').style.display='none';
+  document.getElementById('pg-success').style.display='block';
+  document.getElementById('token-box').textContent='TOKEN: '+id;
+  document.getElementById('success-detail').innerHTML=`
+    <div class="cd-row"><span>Token</span><span style="font-family:monospace;color:var(--blue);font-weight:700">${id}</span></div>
+    <div class="cd-row"><span>Patient</span><span>${bk.patient.name} · ${bk.patient.age} yrs</span></div>
+    <div class="cd-row"><span>Service</span><span>${bk.svc.name}</span></div>
+    <div class="cd-row"><span>Date & Time</span><span>${bk.date.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} at ${bk.time}</span></div>
+    <div class="cd-row"><span>Duration</span><span>${bk.svc.dur}</span></div>
+    <div class="cd-row"><span>Fee</span><span>₹${bk.svc.fee.toLocaleString('en-IN')}</span></div>
+    <div class="cd-row"><span>Contact</span><span>${bk.patient.phone}</span></div>
+  `;
+  if(st.wa.enabled){
+    const sent=await sendWhatsApp(bk);
+    const box=document.getElementById('wa-sent-box');
+    if(sent){box.style.display='block';}
+  }
+  renderAdmin();showToast('🎉','Appointment booked successfully!');
+}
+
+// ── RESET ─────────────────────────────────────────────────────────────────────
+function resetAll(){
+  st.svc=null;st.date=null;st.time=null;st.patient={};
+  ['pg-schedule','pg-patient','pg-confirm','pg-success'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
+  document.getElementById('pg-service').style.display='block';
+  document.getElementById('btn-svc-next').disabled=true;
+  document.getElementById('btn-sch-next').disabled=true;
+  document.getElementById('btn-pat-next').disabled=true;
+  document.getElementById('slots-wrap').style.display='none';
+  document.getElementById('wa-sent-box').style.display='none';
+  ['p-name','p-age','p-phone','p-phone2','p-email','p-meds','p-prev','p-notes'].forEach(id=>document.getElementById(id).value='');
+  ['p-gender','p-forwhom','p-reason','p-duration'].forEach(id=>document.getElementById(id).value='');
+  renderSvc();renderCal();
+}
+
+// ── ADMIN ─────────────────────────────────────────────────────────────────────
+function loadSample(){
+  const data=[
+    {n:'Ramesh Yadav',a:42,g:'Male',ph:'9876501234',r:'Alcohol de-addiction',sid:'deaddiction',st:'confirmed',day:0},
+    {n:'Priya Singh',a:28,g:'Female',ph:'9812340987',r:'Anxiety / Panic attacks',sid:'psychotherapy',st:'confirmed',day:1},
+    {n:'Amit Kumar',a:35,g:'Male',ph:'9898001234',r:'Depression / Low mood',sid:'new-consult',st:'pending',day:0},
+    {n:'Sunita Devi',a:50,g:'Female',ph:'9765409876',r:'Sleep problems / Insomnia',sid:'followup',st:'confirmed',day:2},
+    {n:'Vijay & Meena',a:34,g:'Other',ph:'9654321234',r:'Relationship / Couple issues',sid:'couple-therapy',st:'confirmed',day:3},
+  ];
+  data.forEach(d=>{
+    const dt=new Date();dt.setDate(dt.getDate()+d.day);
+    st.bookings.push({
+      id:'ASHA-'+Math.floor(1000+Math.random()*9000),
+      svc:SERVICES.find(s=>s.id===d.sid),
+      date:dt,time:ALL_SLOTS[Math.floor(Math.random()*ALL_SLOTS.length)],
+      patient:{name:d.n,age:d.a,gender:d.g,phone:d.ph,reason:d.r,forwhom:'Self',meds:'None',prev:'None'},
+      status:d.st,ts:new Date()
+    });
+  });
+}
+function renderAdmin(){
+  const q=(document.getElementById('admin-search')?.value||'').toLowerCase();
+  const list=st.bookings.filter(b=>!q||(b.patient.name.toLowerCase().includes(q)||b.svc.name.toLowerCase().includes(q)));
+  const conf=st.bookings.filter(b=>b.status==='confirmed');
+  const rev=conf.reduce((s,b)=>s+b.svc.fee,0);
+  const todStr=new Date().toDateString();
+  const tod=st.bookings.filter(b=>new Date(b.date).toDateString()===todStr).length;
+  document.getElementById('stat-grid').innerHTML=`
+    <div class="stat"><div class="stat-val">${st.bookings.length}</div><div class="stat-lbl">Total Appointments</div><div class="stat-change">↑ All time</div></div>
+    <div class="stat"><div class="stat-val">₹${rev.toLocaleString('en-IN')}</div><div class="stat-lbl">Revenue</div><div class="stat-change">Confirmed only</div></div>
+    <div class="stat"><div class="stat-val">${tod}</div><div class="stat-lbl">Today</div></div>
+    <div class="stat"><div class="stat-val">${st.bookings.filter(b=>b.status==='pending').length}</div><div class="stat-lbl">Pending</div></div>
+  `;
+  const el=document.getElementById('bk-list');
+  if(!list.length){el.innerHTML='<div class="empty-admin">No appointments found</div>';return;}
+  el.innerHTML=list.map(b=>`
+    <div class="bk-item">
+      <div>
+        <div class="bk-name">${b.patient.name} <span style="font-size:10px;color:var(--txt3);font-weight:400">· ${b.id}</span></div>
+        <div class="bk-meta">${b.svc.icon} ${b.svc.name} · ${new Date(b.date).toLocaleDateString('en-IN',{day:'numeric',month:'short'})} at ${b.time}<br>${b.patient.age} yrs · ${b.patient.gender} · ${b.patient.phone} · ${b.patient.reason}</div>
+      </div>
+      <div class="bk-right">
+        <span class="bk-fee">₹${b.svc.fee.toLocaleString('en-IN')}</span>
+        <span class="badge b-${b.status}">${b.status}</span>
+        <select class="status-sel" onchange="chStatus('${b.id}',this.value)">
+          <option value="">Action</option>
+          <option value="confirmed">✓ Confirm</option>
+          <option value="pending">⏳ Pending</option>
+          <option value="cancelled">✗ Cancel</option>
+        </select>
+      </div>
+    </div>`).join('');
+}
+function chStatus(id,s){if(!s)return;const b=st.bookings.find(b=>b.id===id);if(b)b.status=s;renderAdmin();}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function showTab(tab){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['book','admin'][i]===tab));
+  document.getElementById('tab-book').style.display=tab==='book'?'block':'none';
+  document.getElementById('tab-admin').style.display=tab==='admin'?'block':'none';
+  if(tab==='admin')renderAdmin();
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function showToast(icon,msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-icon').textContent=icon;
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000);
+}
+
+init();
+</script>
+</body>
+</html>
