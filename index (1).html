@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinic Booking Systems | Built by Avanish Kumar · Varanasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0f0d;--surface:#111814;--card:#161d19;
+  --green:#22c55e;--green2:#16a34a;--green-lt:rgba(34,197,94,.08);
+  --gold:#f59e0b;--blue:#3b82f6;--purple:#a78bfa;
+  --txt:#f0faf4;--txt2:#94a89e;--txt3:#4a6054;
+  --bdr:rgba(34,197,94,.12);--bdr2:rgba(34,197,94,.25);
+  --r:12px;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.6}
+
+/* HERO */
+.hero{padding:5rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(34,197,94,.06) 0%,transparent 70%);pointer-events:none}
+.available-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--green);font-weight:600;margin-bottom:1.5rem;letter-spacing:.03em}
+.avail-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.3)}}
+.hero h1{font-family:'Lora',serif;font-size:clamp(28px,5vw,52px);color:var(--txt);font-weight:600;line-height:1.2;margin-bottom:.8rem}
+.hero h1 span{color:var(--green)}
+.hero-sub{font-size:clamp(14px,2.5vw,17px);color:var(--txt2);max-width:520px;margin:0 auto 2rem;line-height:1.7}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-hire{background:var(--green);color:#0a0f0d;border:none;border-radius:8px;padding:12px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-hire:hover{background:#16a34a;transform:translateY(-1px)}
+.btn-wa{background:transparent;color:var(--txt);border:1px solid var(--bdr2);border-radius:8px;padding:12px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-wa:hover{background:var(--green-lt);border-color:var(--green)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;max-width:600px;margin:3rem auto}
+.stat{background:var(--card);padding:1.5rem;text-align:center}
+.stat-num{font-family:'Lora',serif;font-size:32px;color:var(--green);font-weight:600}
+.stat-lbl{font-size:12px;color:var(--txt2);margin-top:4px}
+
+/* SECTION */
+.section{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.section-tag{font-size:11px;font-weight:700;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+.section-title{font-family:'Lora',serif;font-size:clamp(20px,3vw,28px);color:var(--txt);margin-bottom:.5rem}
+.section-sub{font-size:14px;color:var(--txt2);margin-bottom:2rem;line-height:1.7}
+
+/* PROJECT CARDS */
+.projects{display:flex;flex-direction:column;gap:1rem}
+.proj-card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;transition:.2s;text-decoration:none}
+.proj-card:hover{border-color:var(--bdr2);background:rgba(22,29,25,.8)}
+.proj-left{flex:1}
+.proj-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:10px}
+.tag-health{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.tag-psych{background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.2)}
+.tag-general{background:rgba(59,130,246,.1);color:var(--blue);border:1px solid rgba(59,130,246,.2)}
+.proj-name{font-size:17px;font-weight:600;color:var(--txt);margin-bottom:5px;line-height:1.3}
+.proj-desc{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:12px}
+.proj-features{display:flex;gap:6px;flex-wrap:wrap}
+.feat{background:var(--green-lt);border:1px solid var(--bdr);border-radius:20px;padding:3px 9px;font-size:11px;color:var(--txt2)}
+.proj-right{display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0}
+.proj-demo-btn{background:var(--green);color:#0a0f0d;border:none;border-radius:7px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;transition:.2s}
+.proj-demo-btn:hover{background:#16a34a}
+.proj-code-btn{background:transparent;color:var(--txt2);border:1px solid var(--bdr);border-radius:7px;padding:8px 16px;font-size:12px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:.2s}
+.proj-code-btn:hover{border-color:var(--bdr2);color:var(--txt)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:2rem}
+.skill{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:1rem;text-align:center}
+.skill-icon{font-size:24px;margin-bottom:6px}
+.skill-name{font-size:12px;font-weight:600;color:var(--txt2)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.service{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:1.2rem}
+.service:hover{border-color:var(--bdr2)}
+.service-icon{font-size:22px;margin-bottom:8px}
+.service-name{font-size:14px;font-weight:600;color:var(--txt);margin-bottom:3px}
+.service-desc{font-size:12px;color:var(--txt2);line-height:1.5;margin-bottom:10px}
+.service-price{font-size:16px;font-weight:700;color:var(--green)}
+
+/* CONTACT */
+.contact-card{background:var(--card);border:1px solid var(--bdr2);border-radius:var(--r);padding:2rem;text-align:center}
+.contact-card h3{font-family:'Lora',serif;font-size:22px;color:var(--txt);margin-bottom:.5rem}
+.contact-card p{font-size:14px;color:var(--txt2);margin-bottom:1.5rem}
+.contact-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.contact-link{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:.2s}
+.cl-wa{background:#25d366;color:#fff}
+.cl-wa:hover{background:#1aad4f}
+.cl-mail{background:var(--surface);color:var(--txt);border:1px solid var(--bdr2)}
+.cl-mail:hover{border-color:var(--green);color:var(--green)}
+.cl-gh{background:var(--surface);color:var(--txt);border:1px solid var(--bdr2)}
+.cl-gh:hover{border-color:var(--green);color:var(--green)}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--bdr);margin:0}
+
+/* FOOTER */
+.footer{text-align:center;padding:2rem 1.5rem;font-size:12px;color:var(--txt3)}
+
+@media(max-width:580px){
+  .stats{grid-template-columns:1fr}
+  .proj-card{flex-direction:column}
+  .proj-right{flex-direction:row;align-items:center;width:100%}
+  .services-grid{grid-template-columns:1fr}
+  .proj-demo-btn,.proj-code-btn{flex:1;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="available-badge">
+    <span class="avail-dot"></span>
+    Available for new projects
+  </div>
+  <h1>I build <span>clinic & business</span><br>booking systems in 24 hours</h1>
+  <p class="hero-sub">Full-stack web apps with WhatsApp notifications, admin dashboards, and custom branding — built fast using AI-powered development. Based in Varanasi.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/919460686147?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" class="btn-hire" target="_blank">💬 WhatsApp Me</a>
+    <a href="mailto:kavanish005@gmail.com" class="btn-wa">✉️ Send Email</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">24h</div><div class="stat-lbl">Delivery Time</div></div>
+    <div class="stat"><div class="stat-num">3+</div><div class="stat-lbl">Live Demos</div></div>
+    <div class="stat"><div class="stat-num">₹0</div><div class="stat-lbl">Monthly Fee for Clients</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section class="section">
+  <div class="section-tag">Portfolio · Live Demos</div>
+  <div class="section-title">Clinic Booking Systems Built</div>
+  <p class="section-sub">Each system is fully customized — doctor's name, services, fees, address, WhatsApp alerts, and admin dashboard. Built specifically for each clinic from their Justdial listing.</p>
+
+  <div class="projects">
+
+    <div class="proj-card">
+      <div class="proj-left">
+        <span class="proj-tag tag-psych">🧠 Neuropsychiatry</span>
+        <div class="proj-name">Asha Neuropsychiatry Clinic</div>
+        <div class="proj-desc">Dr. Ashish Kr Gupta · Mandaudih, Varanasi. Complete booking system with de-addiction therapy, psychotherapy for couples, and individual sessions. Includes patient confidentiality flow and mental health–specific intake form.</div>
+        <div class="proj-features">
+          <span class="feat">WhatsApp Alerts</span>
+          <span class="feat">5-Step Booking</span>
+          <span class="feat">Admin Dashboard</span>
+          <span class="feat">Confidential Form</span>
+          <span class="feat">Token System</span>
+        </div>
+      </div>
+      <div class="proj-right">
+        <a href="asha-clinic-booking.html" class="proj-demo-btn" target="_blank">▶ Live Demo</a>
+        <a href="https://github.com/StudyAIplanner/clinic-booking-portfolio" class="proj-code-btn" target="_blank">{ } Code</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-left">
+        <span class="proj-tag tag-health">🏥 General Medicine</span>
+        <div class="proj-name">Mahamana Clinic</div>
+        <div class="proj-desc">Dr. Ravi Ranjan MD (BHU) · Lanka, Varanasi. General physician polyclinic with 9 services — fever, diabetes, BP, child health, gastro, report review. Morning and evening slot management with Sunday auto-close.</div>
+        <div class="proj-features">
+          <span class="feat">WhatsApp Alerts</span>
+          <span class="feat">Photo Upload</span>
+          <span class="feat">9 Services</span>
+          <span class="feat">Slot Management</span>
+          <span class="feat">4.7★ Rating Badge</span>
+        </div>
+      </div>
+      <div class="proj-right">
+        <a href="mahamana-clinic-booking.html" class="proj-demo-btn" target="_blank">▶ Live Demo</a>
+        <a href="https://github.com/StudyAIplanner/clinic-booking-portfolio" class="proj-code-btn" target="_blank">{ } Code</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-left">
+        <span class="proj-tag tag-general">⚙️ Generic Template</span>
+        <div class="proj-name">Universal Booking System</div>
+        <div class="proj-desc">Multi-service booking template adaptable to any clinic, salon, or service business. 6 services, calendar picker, time slots, customer form, admin panel with revenue tracking. Fully customizable in under 1 hour.</div>
+        <div class="proj-features">
+          <span class="feat">Any Business Type</span>
+          <span class="feat">WhatsApp Alerts</span>
+          <span class="feat">Admin Panel</span>
+          <span class="feat">Revenue Stats</span>
+          <span class="feat">1-Hour Setup</span>
+        </div>
+      </div>
+      <div class="proj-right">
+        <a href="clinic-booking.html" class="proj-demo-btn" target="_blank">▶ Live Demo</a>
+        <a href="https://github.com/StudyAIplanner/clinic-booking-portfolio" class="proj-code-btn" target="_blank">{ } Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section class="section">
+  <div class="section-tag">Tech Stack</div>
+  <div class="section-title">Built With</div>
+  <div class="skills-grid">
+    <div class="skill"><div class="skill-icon">⚡</div><div class="skill-name">Vibe Coding</div></div>
+    <div class="skill"><div class="skill-icon">🤖</div><div class="skill-name">Claude AI</div></div>
+    <div class="skill"><div class="skill-icon">📦</div><div class="skill-name">HTML / CSS / JS</div></div>
+    <div class="skill"><div class="skill-icon">💬</div><div class="skill-name">WhatsApp API</div></div>
+    <div class="skill"><div class="skill-icon">🚀</div><div class="skill-name">Vercel Deploy</div></div>
+    <div class="skill"><div class="skill-icon">📱</div><div class="skill-name">Mobile Responsive</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="section">
+  <div class="section-tag">What I Build For You</div>
+  <div class="section-title">Services & Pricing</div>
+  <p class="section-sub">One-time payment. No monthly subscription. Your system, your ownership.</p>
+  <div class="services-grid">
+    <div class="service">
+      <div class="service-icon">🏥</div>
+      <div class="service-name">Clinic Booking System</div>
+      <div class="service-desc">Doctor profile, services, calendar, slots, patient form, admin panel, WhatsApp alerts. Live in 24 hours.</div>
+      <div class="service-price">₹15,000</div>
+    </div>
+    <div class="service">
+      <div class="service-icon">🌐</div>
+      <div class="service-name">Business Landing Page</div>
+      <div class="service-desc">Professional website with services, contact form, WhatsApp button, Google Maps. Mobile-friendly.</div>
+      <div class="service-price">₹8,000</div>
+    </div>
+    <div class="service">
+      <div class="service-icon">📊</div>
+      <div class="service-name">Admin Dashboard</div>
+      <div class="service-desc">Custom dashboard to manage orders, bookings, inventory, or staff. With charts and export.</div>
+      <div class="service-price">₹20,000</div>
+    </div>
+    <div class="service">
+      <div class="service-icon">💬</div>
+      <div class="service-name">WhatsApp Chatbot</div>
+      <div class="service-desc">Auto-reply bot for your business. Answers FAQs, collects leads, sends confirmations 24/7.</div>
+      <div class="service-price">₹12,000</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="section">
+  <div class="contact-card">
+    <h3>Ready to build something?</h3>
+    <p>I deliver in 24–48 hours. Based in Varanasi — available in-person or remote across India.</p>
+    <div class="contact-links">
+      <a href="https://wa.me/919460686147?text=Hi%2C%20I%20want%20a%20booking%20system%20for%20my%20clinic" class="contact-link cl-wa" target="_blank">💬 WhatsApp</a>
+      <a href="mailto:kavanish005@gmail.com" class="contact-link cl-mail">✉️ Email</a>
+      <a href="https://github.com/StudyAIplanner" class="contact-link cl-gh" target="_blank">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  Built by Avanish Kumar · Powered by Claude AI · Deployed on Vercel · Varanasi, UP · kavanish005@gmail.com
+</div>
+
+</body>
+</html>
